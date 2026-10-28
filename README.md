@@ -2,6 +2,17 @@
 
 运营人员给出主题、预算（模拟单位）、截止时间（小时），Agent 用「模型选动作 → 执行工具 → 观察结果 → 模型调整或结束」的 ReAct 循环，在预算内完成并保存一份内容活动方案。预算超限时降档重估，工具失败时保留已成功步骤并调整，没有可行方案时返回未完成及缺口。
 
+## 提交信息
+- 题号：2（内容任务规划 Agent）
+- 仓库：https://github.com/wjqCreep/content-task-planning-agent（公开，默认分支 `main`）
+- 最终提交：tag `submission-2` 指向的提交。取 SHA：
+
+```bash
+git rev-parse submission-2
+```
+
+> 提交 SHA 由其内容（含文件内容）决定，无法写进该提交自身的文件里，所以仓库内用 tag 固定最终提交；提交表单中填写的 SHA 与 `git rev-parse submission-2` 的输出一致。
+
 ## 环境
 - Python 3.10+（开发环境 3.11.9），无第三方依赖，见 [requirements.txt](requirements.txt)。
 - 真实模型：Anthropic Messages 兼容接口，变量见 [.env.example](.env.example)。没有模型时用 `--mock`。
