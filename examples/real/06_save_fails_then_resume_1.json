@@ -1,0 +1,174 @@
+{
+  "llm": "anthropic",
+  "status": "incomplete",
+  "reason": "素材检索(M007、M008)与 premium 脚本(6 条大纲)已完成，但 save_plan 返回 error=unavailable、retriable=false，属持续性故障。save_plan 不分档位，换档位或重新生成脚本都无法绕过，重试也不被允许，因此方案未能保存。缺口：需要先恢复保存服务，之后只需再执行一次 save_plan（预计费用 2、耗时约 0.5 小时，剩余预算 10.0、剩余 5.0 小时，足够）。",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "春节",
+  "budget": 20.0,
+  "deadline_hours": 12.0,
+  "cost_total": 10.0,
+  "hours_total": 7.0,
+  "script_tier": "premium",
+  "saved_path": null,
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "failed",
+      "attempts": 1,
+      "error": {
+        "error": "unavailable",
+        "message": "save_plan 不可用（注入的持续故障）",
+        "retriable": false
+      }
+    }
+  },
+  "this_run_cost": 10.0,
+  "resumed": false,
+  "gap": {
+    "cheapest_remaining_cost": 2.0,
+    "budget_remaining": 10.0,
+    "cost_shortfall": 0,
+    "cheapest_remaining_hours": 0.5,
+    "hours_remaining": 5.0,
+    "hours_shortfall": 0
+  },
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "step 0，预算 20.0、剩余 12.0 小时，尚未花费任何费用，先估算 premium 档位是否可行再决定是否执行工具"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=20.0, hours_remaining=12.0, affordable=True, c"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "春节",
+            "春节习俗",
+            "春节营销活动",
+            "年货",
+            "团圆"
+          ]
+        },
+        "reason": "premium 估算 total_cost=12.0 ≤ 预算 20.0，total_hours=7.5 ≤ 12.0，affordable=true，先执行素材检索（费用 2）"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "count=2, ids=['M007', 'M008'], excluded_unlicensed=0, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 2.0,
+        "spent_hours": 1.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "generate_script",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "素材检索已成功(count=2, M007/M008)，剩余预算 18.0 ≥ premium 剩余所需 10.0(脚本 8 + 保存 2)，剩余 11.0 小时 ≥ 约 6.5 小时，仍可行"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, outline_items=6, cost=8"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "脚本已成功生成(outline_items=6)，保存预计费用 2、耗时约 0.5 小时，剩余预算 10.0、剩余 5.0 小时，均足够"
+      },
+      "observation": {
+        "ok": false,
+        "summary": "ERROR unavailable: save_plan 不可用（注入的持续故障）"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "failed"
+        },
+        "tool_calls": 4
+      }
+    },
+    {
+      "step": 5,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "incomplete",
+          "reason": "素材检索(M007、M008)与 premium 脚本(6 条大纲)已完成，但 save_plan 返回 error=unavailable、retriable=false，属持续性故障。save_plan 不分档位，换档位或重新生成脚本都无法绕过，重试也不被允许，因此方案未能保存。缺口：需要先恢复保存服务，之后只需再执行一次 save_plan（预计费用 2、耗时约 0.5 小时，剩余预算 10.0、剩余 5.0 小时，足够）。"
+        },
+        "reason": "save_plan 失败且 retriable=false，不带 tier 参数，换档位无效；只有 save_plan 成功后才能 finish completed，故以 incomplete 结束"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "failed"
+        },
+        "tool_calls": 4
+      }
+    }
+  ]
+}

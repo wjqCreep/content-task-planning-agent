@@ -1,0 +1,10 @@
+[
+  {"id": "M001", "title": "夏季冰咖啡新品海报素材包", "tags": ["咖啡", "新品", "夏季"], "type": "image", "license_ok": true},
+  {"id": "M002", "title": "咖啡师手冲过程短视频片段", "tags": ["咖啡", "视频"], "type": "video", "license_ok": true},
+  {"id": "M003", "title": "门店开业活动文案模板", "tags": ["门店", "开业", "活动"], "type": "text", "license_ok": true},
+  {"id": "M004", "title": "咖啡新品用户评价合集(授权已过期)", "tags": ["咖啡", "新品", "评价"], "type": "text", "license_ok": false},
+  {"id": "M005", "title": "开学季校园快闪活动照片", "tags": ["开学", "校园", "快闪"], "type": "image", "license_ok": true},
+  {"id": "M006", "title": "开学季学生优惠话术", "tags": ["开学", "优惠", "校园"], "type": "text", "license_ok": true},
+  {"id": "M007", "title": "春节礼盒开箱视频", "tags": ["春节", "礼盒", "视频"], "type": "video", "license_ok": true},
+  {"id": "M008", "title": "春节礼盒产品参数表", "tags": ["春节", "礼盒"], "type": "text", "license_ok": true}
+]

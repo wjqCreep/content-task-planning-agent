@@ -1,0 +1,33 @@
+{
+  "key": "d9c2b2a577",
+  "topic": "咖啡",
+  "budget": 5.0,
+  "deadline_hours": 12.0,
+  "spent_cost": 0.0,
+  "spent_hours": 0.0,
+  "script_tier": null,
+  "materials": [],
+  "steps": {
+    "search_materials": {
+      "status": "pending",
+      "attempts": 0,
+      "result": null,
+      "error": null
+    },
+    "generate_script": {
+      "status": "pending",
+      "attempts": 0,
+      "result": null,
+      "error": null
+    },
+    "save_plan": {
+      "status": "pending",
+      "attempts": 0,
+      "result": null,
+      "error": null
+    }
+  },
+  "status": "incomplete",
+  "saved_path": null,
+  "runs": 1
+}

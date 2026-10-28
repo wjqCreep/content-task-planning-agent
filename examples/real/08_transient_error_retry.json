@@ -1,0 +1,207 @@
+{
+  "llm": "anthropic",
+  "status": "completed",
+  "reason": "素材检索（M005、M006）、premium 脚本生成（6 个大纲条目）均成功，save_plan 第 2 次尝试成功，方案已保存至 examples\\real\\state_f\\plan_0392172d7d.json。总花费 12.0/20.0，剩余 4.5/12.0 小时。",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "开学",
+  "budget": 20.0,
+  "deadline_hours": 12.0,
+  "cost_total": 12.0,
+  "hours_total": 7.5,
+  "script_tier": "premium",
+  "saved_path": "examples\\real\\state_f\\plan_0392172d7d.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 2,
+      "error": null
+    }
+  },
+  "this_run_cost": 12.0,
+  "resumed": false,
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "尚未执行任何步骤，预算 20.0、剩余 12.0 小时，先用免费的 estimate_cost 判断 premium 档位是否可行，再决定是否降档。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=20.0, hours_remaining=12.0, affordable=True, c"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "开学",
+            "开学季",
+            "返校",
+            "新学期"
+          ]
+        },
+        "reason": "premium 估算总费用 12.0 ≤ 预算 20.0，总耗时 7.5 ≤ 剩余 12.0 小时，affordable=true，先执行第一步素材检索（费用 2）。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "count=2, ids=['M005', 'M006'], excluded_unlicensed=0, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 2.0,
+        "spent_hours": 1.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "generate_script",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "素材检索成功（count=2，M005、M006）。剩余预算 18.0，premium 剩余步骤只需 8+2=10；剩余 11.0 小时，即使按 premium 全程 7.5 小时的上限也够用，无需重复估算。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, outline_items=6, cost=8"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "generate_script 实际耗时 6 小时（剩余小时从 11.0 降到 5.0），与我之前的假设不同；在执行 save_plan 前，用免费估算确认按已花费 10.0 算出的剩余需求（预计费用 2、约 0.5 小时）不超过剩余预算 10.0 和剩余 5.0 小时。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=2.0, remaining_hours_needed=0.5, budget_remaining=10.0, hours_remaining=5.0, affordable=True, cos"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 4
+      }
+    },
+    {
+      "step": 5,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "estimate_cost 显示 remaining_cost_needed=2.0 ≤ 剩余预算 10.0，remaining_hours_needed=0.5 ≤ 剩余 5.0 小时，affordable=true，脚本已成功生成，执行最后一步保存。"
+      },
+      "observation": {
+        "ok": false,
+        "summary": "ERROR timeout: save_plan 调用超时（注入的一次性故障）"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "failed"
+        },
+        "tool_calls": 5
+      }
+    },
+    {
+      "step": 6,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "save_plan 超时且 retriable=true，仅第 1 次尝试；预算剩余 10.0 ≥ 所需 2.0，剩余 5.0 小时 ≥ 所需 0.5，按规则重试一次，脚本结果已保留无需重做。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "path=examples\\real\\state_f\\plan_0392172d7d.json, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 6
+      }
+    },
+    {
+      "step": 7,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "completed",
+          "reason": "素材检索（M005、M006）、premium 脚本生成（6 个大纲条目）均成功，save_plan 第 2 次尝试成功，方案已保存至 examples\\real\\state_f\\plan_0392172d7d.json。总花费 12.0/20.0，剩余 4.5/12.0 小时。"
+        },
+        "reason": "save_plan 已成功（attempts=2，已返回保存路径），三个步骤全部 success，且未超预算和截止时间，可以按规则 finish completed。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 6
+      }
+    }
+  ]
+}

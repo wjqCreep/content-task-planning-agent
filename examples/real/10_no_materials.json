@@ -1,0 +1,171 @@
+{
+  "llm": "anthropic",
+  "status": "incomplete",
+  "reason": "主题「不存在的主题」两次素材检索（关键词：「不存在的主题」；「不存在」「不存在 主题 活动」）均返回 count=0，资料不足，无法生成脚本和保存方案。已花费 4.0，剩余预算 6.0、剩余 10.0 小时。缺口：缺少与该主题相关的可用素材，需运营人员确认主题名称是否正确，或提供具体主题、关键词或自有素材后再重新规划。",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "不存在的主题",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "cost_total": 4.0,
+  "hours_total": 2.0,
+  "script_tier": null,
+  "saved_path": null,
+  "plan_steps": {
+    "search_materials": {
+      "status": "insufficient",
+      "attempts": 2,
+      "error": "no_materials"
+    },
+    "generate_script": {
+      "status": "pending",
+      "attempts": 0,
+      "error": null
+    },
+    "save_plan": {
+      "status": "pending",
+      "attempts": 0,
+      "error": null
+    }
+  },
+  "this_run_cost": 4.0,
+  "resumed": false,
+  "gap": {
+    "cheapest_remaining_cost": 6.0,
+    "budget_remaining": 6.0,
+    "cost_shortfall": 0,
+    "cheapest_remaining_hours": 2.5,
+    "hours_remaining": 10.0,
+    "hours_shortfall": 0
+  },
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "尚未执行任何步骤，预算剩余 10.0、剩余 12.0 小时，先估算 premium 档位是否可行，再决定是否检索素材。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=10.0, hours_remaining=12.0, affordable=False, "
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "premium 总费用 12.0 超出剩余预算 10.0（cost_gap=2.0，affordable=false），改估算更便宜的 standard 档位。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, total_cost=8.0, total_hours=4.5, breakdown={'search_materials': 2, 'generate_script': 4, 'save_plan': 2}, remaining_cost_needed=8.0, remaining_hours_needed=4.5, budget_remaining=10.0, hours_remaining=12.0, affordable=True, co"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "不存在的主题"
+          ]
+        },
+        "reason": "standard 档位总费用 8.0 ≤ 剩余预算 10.0，耗时 4.5 ≤ 12.0 小时（affordable=true），先用主题本身作为关键词检索素材。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "warning=no_materials, count=0, cost=2, message=未检索到可用素材（已计费，步骤未成功）"
+      },
+      "state_after": {
+        "spent_cost": 2.0,
+        "spent_hours": 1.0,
+        "steps": {
+          "search_materials": "insufficient",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "不存在",
+            "不存在 主题 活动"
+          ]
+        },
+        "reason": "首次检索 count=0（status=insufficient），按规则换一次与主题相关的关键词；剩余预算 8.0 ≥ 重试检索 2 + standard 脚本 4 + 保存 2 = 8，剩余 11.0 小时足够。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "warning=no_materials, count=0, cost=2, message=未检索到可用素材（已计费，步骤未成功）"
+      },
+      "state_after": {
+        "spent_cost": 4.0,
+        "spent_hours": 2.0,
+        "steps": {
+          "search_materials": "insufficient",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 4
+      }
+    },
+    {
+      "step": 5,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "incomplete",
+          "reason": "主题「不存在的主题」两次素材检索（关键词：「不存在的主题」；「不存在」「不存在 主题 活动」）均返回 count=0，资料不足，无法生成脚本和保存方案。已花费 4.0，剩余预算 6.0、剩余 10.0 小时。缺口：缺少与该主题相关的可用素材，需运营人员确认主题名称是否正确，或提供具体主题、关键词或自有素材后再重新规划。"
+        },
+        "reason": "换关键词后检索仍为 count=0（attempts=2，status=insufficient），按规则不编造素材、不用无关关键词凑数，结束并返回 incomplete。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 4.0,
+        "spent_hours": 2.0,
+        "steps": {
+          "search_materials": "insufficient",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 4
+      }
+    }
+  ]
+}

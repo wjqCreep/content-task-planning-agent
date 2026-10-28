@@ -1,0 +1,182 @@
+{
+  "llm": "mock",
+  "status": "completed",
+  "reason": "全部步骤成功",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "咖啡",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "cost_total": 8.0,
+  "hours_total": 4.5,
+  "script_tier": "standard",
+  "saved_path": "examples\\mock\\state_a\\plan_2793096d1a.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    }
+  },
+  "this_run_cost": 8.0,
+  "resumed": false,
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "先估算最高档位是否在预算与时限内"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=10.0, hours_remaining=12.0, affordable=False, "
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "premium 估算 12.0 超过预算余额 10.0；改估更便宜的档位 standard"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, total_cost=8.0, total_hours=4.5, breakdown={'search_materials': 2, 'generate_script': 4, 'save_plan': 2}, remaining_cost_needed=8.0, remaining_hours_needed=4.5, budget_remaining=10.0, hours_remaining=12.0, affordable=True, co"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "咖啡"
+          ]
+        },
+        "reason": "standard 可行(剩余需 8.0 ≤ 预算余额 10.0)，先检索素材"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "count=2, ids=['M001', 'M002'], excluded_unlicensed=1, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 2.0,
+        "spent_hours": 1.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "generate_script",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "素材检索成功，按已选档位生成脚本"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, outline_items=5, cost=4"
+      },
+      "state_after": {
+        "spent_cost": 6.0,
+        "spent_hours": 4.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 4
+      }
+    },
+    {
+      "step": 5,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "脚本已生成，保存方案"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "path=examples\\mock\\state_a\\plan_2793096d1a.json, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 8.0,
+        "spent_hours": 4.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 5
+      }
+    },
+    {
+      "step": 6,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "completed",
+          "reason": "全部步骤成功"
+        },
+        "reason": "方案已保存"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 8.0,
+        "spent_hours": 4.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 5
+      }
+    }
+  ]
+}

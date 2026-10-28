@@ -1,0 +1,39 @@
+{
+  "key": "a96deda97a",
+  "topic": "不存在的主题",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "spent_cost": 4.0,
+  "spent_hours": 2.0,
+  "script_tier": null,
+  "materials": [],
+  "steps": {
+    "search_materials": {
+      "status": "insufficient",
+      "attempts": 2,
+      "result": {
+        "materials": [],
+        "count": 0,
+        "excluded_unlicensed": 0,
+        "cost": 2,
+        "hours": 1
+      },
+      "error": "no_materials"
+    },
+    "generate_script": {
+      "status": "pending",
+      "attempts": 0,
+      "result": null,
+      "error": null
+    },
+    "save_plan": {
+      "status": "pending",
+      "attempts": 0,
+      "result": null,
+      "error": null
+    }
+  },
+  "status": "incomplete",
+  "saved_path": null,
+  "runs": 1
+}

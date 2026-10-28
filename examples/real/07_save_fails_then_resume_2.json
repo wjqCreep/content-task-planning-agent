@@ -1,0 +1,108 @@
+{
+  "llm": "anthropic",
+  "status": "completed",
+  "reason": "save_plan 已成功，方案保存至 examples\\real\\state_e\\plan_cc7b67b44b.json；总花费 12.0（预算 20.0，剩余 8.0），耗时后剩余 4.5 小时（截止 12.0 小时）。",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "春节",
+  "budget": 20.0,
+  "deadline_hours": 12.0,
+  "cost_total": 12.0,
+  "hours_total": 7.5,
+  "script_tier": "premium",
+  "saved_path": "examples\\real\\state_e\\plan_cc7b67b44b.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 2,
+      "error": null
+    }
+  },
+  "this_run_cost": 2.0,
+  "resumed": true,
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "搜索与脚本(premium)已成功，仅剩 save_plan 待执行；当前剩余预算 10.0、剩余 5.0 小时，先估算剩余所需费用与耗时是否可行再保存。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=2.0, remaining_hours_needed=0.5, budget_remaining=10.0, hours_remaining=5.0, affordable=True, cos"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "estimate_cost 显示 affordable=true，剩余所需费用 2.0 ≤ 剩余预算 10.0，所需耗时 0.5 小时 ≤ 剩余 5.0 小时；搜索与脚本已成功，仅需执行 save_plan。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "path=examples\\real\\state_e\\plan_cc7b67b44b.json, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "completed",
+          "reason": "save_plan 已成功，方案保存至 examples\\real\\state_e\\plan_cc7b67b44b.json；总花费 12.0（预算 20.0，剩余 8.0），耗时后剩余 4.5 小时（截止 12.0 小时）。"
+        },
+        "reason": "search_materials、generate_script、save_plan 三步均为 success，满足 completed 条件。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 2
+      }
+    }
+  ]
+}

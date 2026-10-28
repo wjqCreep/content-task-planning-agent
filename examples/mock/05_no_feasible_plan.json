@@ -1,0 +1,142 @@
+{
+  "llm": "mock",
+  "status": "incomplete",
+  "reason": "lite 估算 6.0 超过预算余额 5.0；所有档位均不可行",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "咖啡",
+  "budget": 5.0,
+  "deadline_hours": 12.0,
+  "cost_total": 0.0,
+  "hours_total": 0.0,
+  "script_tier": null,
+  "saved_path": null,
+  "plan_steps": {
+    "search_materials": {
+      "status": "pending",
+      "attempts": 0,
+      "error": null
+    },
+    "generate_script": {
+      "status": "pending",
+      "attempts": 0,
+      "error": null
+    },
+    "save_plan": {
+      "status": "pending",
+      "attempts": 0,
+      "error": null
+    }
+  },
+  "this_run_cost": 0.0,
+  "resumed": false,
+  "gap": {
+    "cheapest_remaining_cost": 6.0,
+    "budget_remaining": 5.0,
+    "cost_shortfall": 1.0,
+    "cheapest_remaining_hours": 2.5,
+    "hours_remaining": 12.0,
+    "hours_shortfall": 0
+  },
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "先估算最高档位是否在预算与时限内"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=5.0, hours_remaining=12.0, affordable=False, c"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "premium 估算 12.0 超过预算余额 5.0；改估更便宜的档位 standard"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, total_cost=8.0, total_hours=4.5, breakdown={'search_materials': 2, 'generate_script': 4, 'save_plan': 2}, remaining_cost_needed=8.0, remaining_hours_needed=4.5, budget_remaining=5.0, hours_remaining=12.0, affordable=False, co"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "lite"
+        },
+        "reason": "standard 估算 8.0 超过预算余额 5.0；改估更便宜的档位 lite"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=lite, total_cost=6.0, total_hours=2.5, breakdown={'search_materials': 2, 'generate_script': 2, 'save_plan': 2}, remaining_cost_needed=6.0, remaining_hours_needed=2.5, budget_remaining=5.0, hours_remaining=12.0, affordable=False, cost_g"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "incomplete",
+          "reason": "lite 估算 6.0 超过预算余额 5.0；所有档位均不可行"
+        },
+        "reason": "lite 估算 6.0 超过预算余额 5.0；已无更低档位可选"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    }
+  ]
+}

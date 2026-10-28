@@ -1,0 +1,108 @@
+{
+  "llm": "mock",
+  "status": "completed",
+  "reason": "全部步骤成功",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "春节",
+  "budget": 20.0,
+  "deadline_hours": 12.0,
+  "cost_total": 12.0,
+  "hours_total": 7.5,
+  "script_tier": "premium",
+  "saved_path": "examples\\mock\\state_e\\plan_cc7b67b44b.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 2,
+      "error": null
+    }
+  },
+  "this_run_cost": 2.0,
+  "resumed": true,
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "先估算最高档位是否在预算与时限内"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=2.0, remaining_hours_needed=0.5, budget_remaining=10.0, hours_remaining=5.0, affordable=True, cos"
+      },
+      "state_after": {
+        "spent_cost": 10.0,
+        "spent_hours": 7.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "premium 可行(剩余需 2.0 ≤ 预算余额 10.0)，检索与脚本结果已保留，只续跑保存"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "path=examples\\mock\\state_e\\plan_cc7b67b44b.json, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "completed",
+          "reason": "全部步骤成功"
+        },
+        "reason": "方案已保存"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 12.0,
+        "spent_hours": 7.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 2
+      }
+    }
+  ]
+}

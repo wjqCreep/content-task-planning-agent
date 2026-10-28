@@ -1,0 +1,81 @@
+{
+  "key": "cc7b67b44b",
+  "topic": "春节",
+  "budget": 20.0,
+  "deadline_hours": 12.0,
+  "spent_cost": 12.0,
+  "spent_hours": 7.5,
+  "script_tier": "premium",
+  "materials": [
+    {
+      "id": "M007",
+      "title": "春节礼盒开箱视频",
+      "type": "video"
+    },
+    {
+      "id": "M008",
+      "title": "春节礼盒产品参数表",
+      "type": "text"
+    }
+  ],
+  "steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "result": {
+        "materials": [
+          {
+            "id": "M007",
+            "title": "春节礼盒开箱视频",
+            "type": "video"
+          },
+          {
+            "id": "M008",
+            "title": "春节礼盒产品参数表",
+            "type": "text"
+          }
+        ],
+        "count": 2,
+        "excluded_unlicensed": 0,
+        "cost": 2,
+        "hours": 1
+      },
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "result": {
+        "script": {
+          "tier": "premium",
+          "desc": "高质量：多版本脚本+分镜",
+          "outline": [
+            "开场：引入主题与素材《春节礼盒开箱视频》",
+            "开场：引入主题与素材《春节礼盒产品参数表》",
+            "中段：核心卖点与互动环节",
+            "结尾：行动号召与转化入口",
+            "备选版本 B：情景短剧版",
+            "分镜表（12 镜）"
+          ]
+        },
+        "cost": 8,
+        "hours": 6
+      },
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 2,
+      "result": {
+        "path": "examples\\mock\\state_e\\plan_cc7b67b44b.json",
+        "deduplicated": false,
+        "cost": 2,
+        "hours": 0.5
+      },
+      "error": null
+    }
+  },
+  "status": "completed",
+  "saved_path": "examples\\mock\\state_e\\plan_cc7b67b44b.json",
+  "runs": 2
+}

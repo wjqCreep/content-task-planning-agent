@@ -1,0 +1,35 @@
+{
+  "llm": "anthropic",
+  "status": "already_completed",
+  "reason": "相同输入已完成并保存，未重复执行、未重复计费",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "咖啡",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "cost_total": 8.0,
+  "hours_total": 4.5,
+  "script_tier": "standard",
+  "saved_path": "examples\\real\\state_a\\plan_2793096d1a.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    }
+  },
+  "this_run_cost": 0,
+  "trace": []
+}

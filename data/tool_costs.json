@@ -1,0 +1,10 @@
+{
+  "_note": "合成数据。费用单位为模拟单位，耗时单位为小时。",
+  "search_materials": {"cost": 2, "hours": 1},
+  "generate_script": {
+    "premium": {"cost": 8, "hours": 6, "desc": "高质量：多版本脚本+分镜"},
+    "standard": {"cost": 4, "hours": 3, "desc": "标准：单版本脚本+简要分镜"},
+    "lite": {"cost": 2, "hours": 1, "desc": "精简：脚本提纲"}
+  },
+  "save_plan": {"cost": 2, "hours": 0.5}
+}

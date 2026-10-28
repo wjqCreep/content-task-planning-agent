@@ -1,0 +1,25 @@
+test_deadline_gap (test_agent.TestCore.test_deadline_gap) ... ok
+test_missing_budget_or_deadline_runs_no_tools (test_agent.TestCore.test_missing_budget_or_deadline_runs_no_tools) ... ok
+test_no_feasible_plan_reports_gap (test_agent.TestCore.test_no_feasible_plan_reports_gap) ... ok
+test_over_budget_replan_to_cheaper_tier (test_agent.TestCore.test_over_budget_replan_to_cheaper_tier) ... ok
+test_failed_step_never_recorded_as_success (test_agent.TestFailures.test_failed_step_never_recorded_as_success) ... ok
+test_no_materials_is_insufficient_not_success (test_agent.TestFailures.test_no_materials_is_insufficient_not_success) ... ok
+test_resume_only_reruns_failed_step (test_agent.TestFailures.test_resume_only_reruns_failed_step) ... ok
+test_tool_failure_keeps_success_and_replans (test_agent.TestFailures.test_tool_failure_keeps_success_and_replans) ... ok
+test_transient_error_retried_once (test_agent.TestFailures.test_transient_error_retried_once) ... ok
+test_bad_spec (test_agent.TestInjector.test_bad_spec) ... ok
+test_budget_guard_blocks_overspend_even_if_model_insists (test_agent.TestLimitsAndGuards.test_budget_guard_blocks_overspend_even_if_model_insists) ... ok
+test_cannot_finish_completed_without_saving (test_agent.TestLimitsAndGuards.test_cannot_finish_completed_without_saving) ... ok
+test_dependency_guard (test_agent.TestLimitsAndGuards.test_dependency_guard) ... ok
+test_invalid_model_output_is_observed_not_crash (test_agent.TestLimitsAndGuards.test_invalid_model_output_is_observed_not_crash) ... ok
+test_repeating_successful_step_is_refused (test_agent.TestLimitsAndGuards.test_repeating_successful_step_is_refused) ... ok
+test_step_limit (test_agent.TestLimitsAndGuards.test_step_limit) ... ok
+test_tool_call_limit (test_agent.TestLimitsAndGuards.test_tool_call_limit) ... ok
+test_completed_state_but_plan_file_missing_resaves_only (test_agent.TestRepeat.test_completed_state_but_plan_file_missing_resaves_only) ... ok
+test_fresh_rerun_does_not_duplicate_or_double_charge_file (test_agent.TestRepeat.test_fresh_rerun_does_not_duplicate_or_double_charge_file) ... ok
+test_repeat_completed_is_idempotent (test_agent.TestRepeat.test_repeat_completed_is_idempotent) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.070s
+
+OK

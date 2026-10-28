@@ -1,0 +1,185 @@
+{
+  "llm": "anthropic",
+  "status": "completed",
+  "reason": "三步均已成功：素材检索(2条可用素材)、standard档脚本(5个大纲条目)、方案已保存至 examples\\real\\state_a\\plan_2793096d1a.json。总花费8.0，未超预算10.0；剩余时间7.5小时，未超截止时间。",
+  "limits": {
+    "max_steps": 12,
+    "max_tool_calls": 10
+  },
+  "topic": "咖啡",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "cost_total": 8.0,
+  "hours_total": 4.5,
+  "script_tier": "standard",
+  "saved_path": "examples\\real\\state_a\\plan_2793096d1a.json",
+  "plan_steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 1,
+      "error": null
+    }
+  },
+  "this_run_cost": 8.0,
+  "resumed": false,
+  "trace": [
+    {
+      "step": 1,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "premium"
+        },
+        "reason": "尚未花费任何预算(budget_remaining=10.0, hours_remaining=12.0)，先估算最高档位premium是否可行，再决定是否降档。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=premium, total_cost=12.0, total_hours=7.5, breakdown={'search_materials': 2, 'generate_script': 8, 'save_plan': 2}, remaining_cost_needed=12.0, remaining_hours_needed=7.5, budget_remaining=10.0, hours_remaining=12.0, affordable=False, "
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 1
+      }
+    },
+    {
+      "step": 2,
+      "decision": {
+        "action": "estimate_cost",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "premium总费用12.0超出预算10.0(cost_gap=2.0, affordable=false)，降档估算standard是否可行。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, total_cost=8.0, total_hours=4.5, breakdown={'search_materials': 2, 'generate_script': 4, 'save_plan': 2}, remaining_cost_needed=8.0, remaining_hours_needed=4.5, budget_remaining=10.0, hours_remaining=12.0, affordable=True, co"
+      },
+      "state_after": {
+        "spent_cost": 0.0,
+        "spent_hours": 0.0,
+        "steps": {
+          "search_materials": "pending",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 2
+      }
+    },
+    {
+      "step": 3,
+      "decision": {
+        "action": "search_materials",
+        "args": {
+          "keywords": [
+            "咖啡",
+            "咖啡文化",
+            "咖啡冲泡",
+            "咖啡豆产地"
+          ]
+        },
+        "reason": "standard总费用8.0在预算10.0内(affordable=true, 耗时4.5h<12h)，先执行第一步素材检索，关键词围绕咖啡主题拟定。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "count=2, ids=['M001', 'M002'], excluded_unlicensed=1, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 2.0,
+        "spent_hours": 1.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "pending",
+          "save_plan": "pending"
+        },
+        "tool_calls": 3
+      }
+    },
+    {
+      "step": 4,
+      "decision": {
+        "action": "generate_script",
+        "args": {
+          "tier": "standard"
+        },
+        "reason": "素材检索成功(count=2)，已花费2.0、剩余预算8.0；按standard拆分，剩余脚本4+保存2=6.0≤8.0，剩余时间11h也足够，无需降档。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "tier=standard, outline_items=5, cost=4"
+      },
+      "state_after": {
+        "spent_cost": 6.0,
+        "spent_hours": 4.0,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "pending"
+        },
+        "tool_calls": 4
+      }
+    },
+    {
+      "step": 5,
+      "decision": {
+        "action": "save_plan",
+        "args": {},
+        "reason": "脚本已生成成功(outline_items=5)，剩余预算4.0≥保存费用2.0，剩余时间8.0h足够，执行最后一步保存。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "path=examples\\real\\state_a\\plan_2793096d1a.json, cost=2"
+      },
+      "state_after": {
+        "spent_cost": 8.0,
+        "spent_hours": 4.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 5
+      }
+    },
+    {
+      "step": 6,
+      "decision": {
+        "action": "finish",
+        "args": {
+          "status": "completed",
+          "reason": "三步均已成功：素材检索(2条可用素材)、standard档脚本(5个大纲条目)、方案已保存至 examples\\real\\state_a\\plan_2793096d1a.json。总花费8.0，未超预算10.0；剩余时间7.5小时，未超截止时间。"
+        },
+        "reason": "save_plan已成功(path已返回，spent_cost=8.0≤10.0，hours_remaining=7.5>0)，满足completed条件。"
+      },
+      "observation": {
+        "ok": true,
+        "summary": "结束"
+      },
+      "state_after": {
+        "spent_cost": 8.0,
+        "spent_hours": 4.5,
+        "steps": {
+          "search_materials": "success",
+          "generate_script": "success",
+          "save_plan": "success"
+        },
+        "tool_calls": 5
+      }
+    }
+  ]
+}

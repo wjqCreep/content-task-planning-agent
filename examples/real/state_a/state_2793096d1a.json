@@ -1,0 +1,80 @@
+{
+  "key": "2793096d1a",
+  "topic": "咖啡",
+  "budget": 10.0,
+  "deadline_hours": 12.0,
+  "spent_cost": 8.0,
+  "spent_hours": 4.5,
+  "script_tier": "standard",
+  "materials": [
+    {
+      "id": "M001",
+      "title": "夏季冰咖啡新品海报素材包",
+      "type": "image"
+    },
+    {
+      "id": "M002",
+      "title": "咖啡师手冲过程短视频片段",
+      "type": "video"
+    }
+  ],
+  "steps": {
+    "search_materials": {
+      "status": "success",
+      "attempts": 1,
+      "result": {
+        "materials": [
+          {
+            "id": "M001",
+            "title": "夏季冰咖啡新品海报素材包",
+            "type": "image"
+          },
+          {
+            "id": "M002",
+            "title": "咖啡师手冲过程短视频片段",
+            "type": "video"
+          }
+        ],
+        "count": 2,
+        "excluded_unlicensed": 1,
+        "cost": 2,
+        "hours": 1
+      },
+      "error": null
+    },
+    "generate_script": {
+      "status": "success",
+      "attempts": 1,
+      "result": {
+        "script": {
+          "tier": "standard",
+          "desc": "标准：单版本脚本+简要分镜",
+          "outline": [
+            "开场：引入主题与素材《夏季冰咖啡新品海报素材包》",
+            "开场：引入主题与素材《咖啡师手冲过程短视频片段》",
+            "中段：核心卖点与互动环节",
+            "结尾：行动号召与转化入口",
+            "简要分镜（6 镜）"
+          ]
+        },
+        "cost": 4,
+        "hours": 3
+      },
+      "error": null
+    },
+    "save_plan": {
+      "status": "success",
+      "attempts": 1,
+      "result": {
+        "path": "examples\\real\\state_a\\plan_2793096d1a.json",
+        "deduplicated": false,
+        "cost": 2,
+        "hours": 0.5
+      },
+      "error": null
+    }
+  },
+  "status": "completed",
+  "saved_path": "examples\\real\\state_a\\plan_2793096d1a.json",
+  "runs": 1
+}
